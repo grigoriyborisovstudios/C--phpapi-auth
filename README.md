@@ -1,6 +1,6 @@
 # C# Authentication via PHP API
 
-MyAuthClient is a straightforward C# console application used to interact with an authentication API. It's designed to bypass platform and programming language restrictions, allowing users to register and login via the console.
+This Authentication Client is a straightforward C# console application used to interact with an authentication API. It's designed to bypass platform and programming language restrictions, allowing users to register and login via the console.
 
 ## Prerequisites
 
