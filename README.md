@@ -1,4 +1,4 @@
-# MyAuthClient
+# C# Authentication via PHP API
 
 MyAuthClient is a straightforward C# console application used to interact with an authentication API. It's designed to bypass platform and programming language restrictions, allowing users to register and login via the console.
 
@@ -33,8 +33,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 This will create a database named `user_db` and a table named `users` with columns for `id`, `username`, and `password`.
 
 Ensure your API is configured to use this database and table.
-
-3. Run the application using `dotnet run`.
 
 ## Usage
 
