@@ -38,7 +38,7 @@ Ensure your API is configured to use this database and table.
 
 This project relies on the Newtonsoft.Json package version 13.0.3. To download it, follow these steps:
 
-1. Right-click on your project in the Solution Explorer.
+1. Find Tools in the upper nav bar.
 2. Select "Manage NuGet Packages" from the dropdown menu.
 3. In the "Browse" tab, search for "Newtonsoft.Json".
 4. Select the package and click "Install".
