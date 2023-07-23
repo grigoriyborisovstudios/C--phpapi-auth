@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 public class Program
 {
     private static readonly HttpClient client = new HttpClient();
-    private static readonly string baseUrl = "https://cdn.hdanime.org/api/authapi.php/login";
+    private static readonly string baseUrl = "http://your-api";
 
     public static async Task Main(string[] args)
     {
