@@ -34,6 +34,24 @@ This will create a database named `user_db` and a table named `users` with colum
 
 Ensure your API is configured to use this database and table.
 
+## Dependencies
+
+This project relies on the Newtonsoft.Json package version 13.0.3. To download it, follow these steps:
+
+1. Right-click on your project in the Solution Explorer.
+2. Select "Manage NuGet Packages" from the dropdown menu.
+3. In the "Browse" tab, search for "Newtonsoft.Json".
+4. Select the package and click "Install".
+5. Once the installation is complete, you can use the package in your code.
+
+Make sure to include the following line at the top of your C# file to import the Newtonsoft.Json namespace:
+
+```csharp
+using Newtonsoft.Json;
+```
+
+If you encounter any issues with the installation, please refer to the [Newtonsoft.Json NuGet page ↗](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3?_src=template) for further instructions.
+
 ## Usage
 
 Run the application and follow the prompts in the console to register or login.
