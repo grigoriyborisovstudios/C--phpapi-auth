@@ -67,7 +67,7 @@ public class Program
 
     static async Task Register(string username, SecureString password)
     {
-        // Unsecured password conversion. This is insecure and used just for illustration.
+        // Unsecured password conversion. This is just for showcase.
         var passwordBstr = Marshal.SecureStringToBSTR(password);
         var insecurePassword = Marshal.PtrToStringBSTR(passwordBstr);
         Marshal.ZeroFreeBSTR(passwordBstr);
@@ -99,7 +99,7 @@ public class Program
 
     static async Task Login(string username, SecureString password)
     {
-        // Unsecured password conversion. This is insecure and used just for illustration.
+        // Unsecured password conversion. #2 This is just for showcase.
         var passwordBstr = Marshal.SecureStringToBSTR(password);
         var insecurePassword = Marshal.PtrToStringBSTR(passwordBstr);
         Marshal.ZeroFreeBSTR(passwordBstr);
