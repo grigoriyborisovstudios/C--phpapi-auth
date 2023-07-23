@@ -9,6 +9,9 @@ $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
 
 $ip = $_SERVER['REMOTE_ADDR'];
 $file = 'ratelimits.txt';
+if (!file_exists($file)) {
+    file_put_contents($file, '');
+}
 $lines = file($file);
 $limit = 10;  
 $timeout = 60;
