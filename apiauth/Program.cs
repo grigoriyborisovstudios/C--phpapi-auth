@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security;
@@ -8,7 +9,6 @@ using Newtonsoft.Json;
 
 public class Program
 {
-    private static readonly HttpClient client = new HttpClient();
     private static readonly string baseUrl = "http://your-api-url";
 
     public static async Task Main(string[] args)
@@ -22,17 +22,20 @@ public class Program
         Console.WriteLine("Please enter your password:");
         SecureString password = GetPasswordFromConsole();
 
-        if (choice == "1")
+        using (var client = new HttpClient())
         {
-            await Register(username, password);
-        }
-        else if (choice == "2")
-        {
-            await Login(username, password); //2
-        }
-        else
-        {
-            Console.WriteLine("Invalid option selected");
+            if (choice == "1")
+            {
+                await Register(username, password, client);
+            }
+            else if (choice == "2")
+            {
+                await Login(username, password, client);
+            }
+            else
+            {
+                Console.WriteLine("Invalid option selected");
+            }
         }
 
         Console.ReadKey();
@@ -65,14 +68,10 @@ public class Program
         return password;
     }
 
-    static async Task Register(string username, SecureString password)
+    static async Task Register(string username, SecureString password, HttpClient client)
     {
-        // Unsecured password conversion. This is just for showcase.
-        var passwordBstr = Marshal.SecureStringToBSTR(password);
-        var insecurePassword = Marshal.PtrToStringBSTR(passwordBstr);
-        Marshal.ZeroFreeBSTR(passwordBstr);
-
-        var requestData = new { username = username, password = insecurePassword };
+        var cred = new NetworkCredential(username, password);
+        var requestData = new { username = cred.UserName, password = cred.Password };
         var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
 
         try
@@ -97,14 +96,10 @@ public class Program
         }
     }
 
-    static async Task Login(string username, SecureString password)
+    static async Task Login(string username, SecureString password, HttpClient client)
     {
-        // Unsecured password conversion. #2 This is just for showcase.
-        var passwordBstr = Marshal.SecureStringToBSTR(password);
-        var insecurePassword = Marshal.PtrToStringBSTR(passwordBstr);
-        Marshal.ZeroFreeBSTR(passwordBstr);
-
-        var requestData = new { username = username, password = insecurePassword };
+        var cred = new NetworkCredential(username, password);
+        var requestData = new { username = cred.UserName, password = cred.Password };
         var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
 
         try
